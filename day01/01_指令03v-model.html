@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <!-- 指令7：v-model 双向数据绑定 只能绑定表单元素  和组件-->
+        <!-- 1：输入框 绑定的是value的值-->
+        <input type="text" v-model="msg1">
+        <div>{{msg1}}</div>
+        <hr>
+
+        <!-- 2：文本域 绑定的是value的值-->
+        <textarea type="text" v-model="msg2"></textarea>
+        <div>{{msg2}}</div>
+        <hr>
+
+        <!-- 3：复选框 绑定的是value的值 -->
+        <div>请选择校区</div>
+        <input type="checkbox" v-model="msg3" value="01">郑州校区
+        <input type="checkbox" v-model="msg3" value="02">延庆校区
+        <input type="checkbox" v-model="msg3" value="03">昌平校区
+
+        <div>{{msg3}}</div>
+        <hr>
+
+        <div>请选择校区</div>
+        <!-- 3：复选框（单个） 绑定的是checked的值 -->
+        <input type="checkbox" v-model="msg4">升班
+
+        <div>{{msg4}}</div>
+        <hr>
+
+
+        <!-- 4：单选框 绑定的是value的值 -->
+        <div>请选择性别</div>
+        <input type="radio" v-model="msg5" value="01">男
+        <input type="radio" v-model="msg5" value="02">女
+        <div>{{msg5}}</div>
+        <hr>
+
+        <!-- 4：下拉框 绑定的是value的值 -->
+        <div>请选择爱好</div>
+        <select v-model="msg6">
+            <option value="01">吃</option>
+            <option value="02">睡</option>
+            <option value="03">玩</option>
+        </select>
+        <div>{{msg6}}</div>
+        <hr>
+
+
+
+
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        /* 
+            Vue 的特点：
+            1: 面向数据编程， 数据驱动，数驱，（我们只用操作数据，不用操作dom）        jq: 操作dom
+            2：组件化
+            指令：带有v-前缀的HTML属性
+         */
+        new Vue({
+            el: '#app', // 是vue在页面中接管的范围
+            data: { // 放数据的地方 
+                msg1: '',
+                msg2: '',
+                msg3: ['02', '03'],
+                msg4: true,
+                msg5: '02',
+                msg6: '01',
+            },
+            methods: { // 事件函数
+
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 如果想自动将用户的输入值转为数值类型，可以给 v-model 添加 number 修饰符： -->
+        <input type="text" v-model.number="num1">
+        <select v-model="cacl">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model.number="num2" @keyup.enter="handler">
+        <!-- <input type="text" v-model.number="num2" @keyup.13="handler"> -->
+        <!-- <button v-on:click="handler">=</button> -->
+        <button @click="handler">=</button>
+        <span>{{result}}</span>
+    </div>
+
+    <script>
+        // let abc = 123;
+        new Vue({
+            el: '#app',
+            data: {
+                num1: '',
+                num2: '',
+                result: '',
+                cacl: '+',
+                // abc: abc
+                // abc
+            },
+            methods: {
+                handler() {
+                    let r = 0;
+                    if(this.cacl === '+') {
+                        r = this.num1 + this.num2
+                    }else if(this.cacl === '-') {
+                        r = this.num1 - this.num2
+                    }else if(this.cacl === '*') {
+                        r = this.num1 * this.num2
+                    }else if(this.cacl === '/') {
+                        r = this.num1 / this.num2
+                    }
+                    this.result = r
+                },
+                // fn: function() {
+
+                // },
+                fn() {
+
+                }
+
+            }
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+        .nav {
+            display: flex;
+
+        }
+
+        span {
+            flex: 1;
+            text-align: center;
+            line-height: 60px;
+        }
+
+        .active {
+            background: skyblue;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1: tab切换 -->
+        <div class="nav">
+            <span :class="index === i ? 'active' : ''" v-for="(item, i) in navList"
+                v-on:click="change(i)">{{item}}</span>
+        </div>
+
+        <!-- 2：列表 -->
+        <div v-if="index === 0">
+            <ul>
+                <li v-for="item in list">{{item.val}}</li>
+            </ul>
+        </div>
+
+        <!-- 3：表单 -->
+        <div v-if="index === 1">
+            姓名：<input type="text" v-model="obj.name" placeholder="请输入您的姓名">
+            <hr>
+            性别：
+            <input type="radio" v-model="obj.sex" value="男">男
+            <input type="radio" v-model="obj.sex" value="女">女
+            <hr>
+            爱好：
+            <input type="checkbox" v-model="obj.hobby" value="吃">吃
+            <input type="checkbox" v-model="obj.hobby" value="睡">睡
+            <input type="checkbox" v-model="obj.hobby" value="玩">玩
+            <hr>
+            是否收到offer:
+            <input type="checkbox" v-model="obj.offer">
+            <hr>
+            校区：
+            <select v-model="obj.school">
+                <option value="北京校区">北京校区</option>
+                <option value="上海校区">上海校区</option>
+                <option value="深圳校区">深圳校区</option>
+            </select>
+            <div>{{obj}}</div>
+        </div>
+
+        <!-- 4：空 -->
+        <div v-if="index === 2">空</div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                navList: ['列表', '表单', '空'], // tab切换的数组
+                index: 1, // 当前的下标
+                // list: ['aaa', 'bbb', 'ccc'],
+                list: [{ val: 'aaa', id: 1 }, { val: 'bbb', id: 2 }, { val: 'ccc', id: 3 }],
+
+                obj: { // 表单对象
+                    name: '',
+                    sex: '女',
+                    hobby: [],
+                    offer: false,
+                    school: '上海校区',
+                },
+            },
+            methods: {
+                change: function (i) {
+                    this.index = i;
+                }
+            }
+        })
+
+    </script>
+
+
+
+
+</body>
+
+</html>

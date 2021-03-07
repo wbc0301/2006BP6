@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+
+        <!-- 差值表达式 里边可以写js的变量和表达式 可以想象成是js的一个运行空间 -->
+        {{msg}}
+        <p>{{'msg2'}} </p>
+        <p >{{msg2 + msg3}}</p>
+        <p>{{flag ? num1 : num2}}</p>
+
+    </div>
+
+    <div id="app2">
+        <!-- 这里和vue没有关系 -->
+        {{msg}}
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        /* 
+            Vue 的特点：
+            1: 面向数据编程， 数据驱动，数驱，（我们只用操作数据，不用操作dom）        jq: 操作dom
+            2：组件化   .vue结尾的文件就是一个组件
+
+            模块化：封装的是js逻辑
+            组件化：封装的是js逻辑和HTML和CSS
+
+         */
+
+        new Vue({
+            el: '#app', // 是vue在页面中接管的范围
+            data: { // 放数据的地方
+                msg: 'hello world222',
+                msg2: '2006B',
+                msg3: '都是帅哥',
+                // flag: [].length,
+                flag: true,
+                num1: 111,
+                num2: 222
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

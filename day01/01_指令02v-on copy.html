@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <div>{{msg1}}</div>
+        <!-- 指令6：v-on 绑定dom事件-->
+        <button v-on:click="change">点击</button>
+        <ul>
+            <!-- $event vue提供给我们的事件对象 -->
+            <li v-for="item in list" v-on:click="show(item, $event)">{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        /* 
+            Vue 的特点：
+            1: 面向数据编程， 数据驱动，数驱，（我们只用操作数据，不用操作dom）        jq: 操作dom
+            2：组件化
+            指令：带有v-前缀的HTML属性
+         */
+        new Vue({
+            el: '#app', // 是vue在页面中接管的范围
+            data: { // 放数据的地方 
+                msg1: '王者',
+                list:[111,222,333]
+            },
+            methods: { // 事件函数
+                change: function (e) { // 这里不能使用箭头函数
+                    console.log(this)
+                    console.log(this.msg1)
+                    console.log(e)
+                    // this.msg1 = '荣耀'
+                    // let s = this.msg1 === '王者' ? '荣耀' : '王者'
+                    // this.msg1 = s;
+                    this.msg1 = this.msg1 === '王者' ? '荣耀' : '王者'
+                },
+                show: function(val, e) {
+                    alert(val)
+                    console.log(e);
+                }
+            }
+        })
+
+   
+
+
+
+    </script>
+</body>
+
+</html>

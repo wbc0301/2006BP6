@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="app">
+
+        <!-- 差值表达式 里边可以写js的变量和表达式 可以想象成是js的一个运行空间 -->
+        <!-- {{msg}} -->
+        <div class="abc"></div>
+
+        <!-- 指令1： v-text 展示数据 -->
+        <div v-text="msg"></div>
+        <div v-text="msg2 + msg3 + '我是拼接上的东西'"></div>
+        <div v-text="msg4"></div>
+
+        <!-- 指令2： v-html 展示数据 -->
+        <div v-html="msg"></div>
+        <div v-html="msg4"></div>
+
+        <!-- 指令3：v-bind 绑定一个HTML属性，属性值就变成一个变量了-->
+        <a href="http://www.baidu.com">去百度</a><br>
+        <a v-bind:href="url">去百度</a><br>
+        <a :href="url">去百度</a> <!-- 简写 -->
+
+
+        <!-- 指令4：v-if 控制元素的显示隐藏 必须是紧邻的兄弟元素-->
+        <!-- <div v-if="flag">aaa</div>
+        <div v-else>ccc</div> -->
+
+        <div v-if="num > 0">aaa</div>
+        <div v-else-if="num < 0">bbb</div>
+        <div v-else>ccc</div>
+
+
+        <!-- 指令4：v-show 控制元素的显示隐藏 通过display: none;隐藏-->
+        <div v-show="flag">222</div>
+
+    </div>
+
+    <script src="./vue.js"></script>
+    <script>
+        /* 
+            Vue 的特点：
+            1: 面向数据编程， 数据驱动，数驱，（我们只用操作数据，不用操作dom）        jq: 操作dom
+            2：组件化
+
+            指令：带有v-前缀的HTML属性
+         */
+        new Vue({
+            el: '#app', // 是vue在页面中接管的范围
+            data: { // 放数据的地方
+                msg: 'hello word',
+                msg2: '2006B',
+                msg3: '都是帅哥',
+                msg4: '<h1>我是标题</h1>',
+                url: 'http://www.baidu.com',
+                flag: false,
+                num: 0,
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>
